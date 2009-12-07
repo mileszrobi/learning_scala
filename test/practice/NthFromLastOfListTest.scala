@@ -25,9 +25,12 @@ class NthFromLastOfListTest {
     Assert.assertEquals(1, LearningLists.NthFromLast(3, List(1, 2, 3)));
   }
   
-  @Test ( expected = classOf[NullPointerException] )
-  def negativeN() : Unit = {
-	  throw new NullPointerException()
-	  //LearningLists.NthFromLast(-1, List());
+  @Test
+  def askingForZerothElementIsNil = {
+	Assert.assertEquals(Nil,  LearningLists.NthFromLast(0, List()));
+  }
+  @Test 
+  def negativeN() = {
+	Assert.assertEquals(Nil,  LearningLists.NthFromLast(-1, List()));
   }
 }

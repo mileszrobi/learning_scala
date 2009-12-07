@@ -1,24 +1,12 @@
 package practice
 
 object LearningLists {
-	def LastOf[T] (list : List[T]) = {
-		list.size match {
-			case 0 => Nil
-			case nonZero => list.last
-		}
-	}
+	def LastOf[T] (list : List[T]) = NthFromLast(1, list)
 	
-	def LastButOf[T] (list : List[T]) = {
-		list.size match {
-			case 0 | 1 => Nil
-			case nonZero => list.reverse(1)
-		}
-	}
+	def LastButOf[T] (list : List[T]) = NthFromLast(2, list)
 	
-	def NthFromLast[T] (n : Int, list : List[T]) = {
-		list.size match {
-			case x if (x < n) => Nil
-			case _ => list.reverse(n - 1)
-		}
+	def NthFromLast[T] (n : Int, list : List[T]) =  n match {
+		case x if 1 to list.size contains n => list.reverse(n - 1)
+		case _ => Nil
 	}
 }
