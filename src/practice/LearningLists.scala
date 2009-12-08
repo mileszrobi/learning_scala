@@ -1,7 +1,7 @@
 package practice
 
 object LearningLists {
-	def isPalindrome[T] (list : List[T]) = true
+	def isPalindrome[T] (list : List[T]) = list == list.reverse 
 	
 	def lastOf[T] (list : List[T]) = nthFromLast(1, list)
 	
@@ -11,5 +11,5 @@ object LearningLists {
 	def nthFromLast[T] (n : Int, list : List[T]) =  n match {
 		case x if 1 to list.size contains n => list.reverse(n - 1)
 		case _ =>  None
-	}
+	}	
 }
