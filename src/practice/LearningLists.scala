@@ -1,6 +1,15 @@
 package practice
 
 object LearningLists {
+	def flatten (list : List[Any]) : List[Any] = {
+		if (list.isEmpty) 
+			Nil 
+		else list.head match {
+			case x:List[Any] => flatten(x):::flatten(list.tail)
+			case _ => list.head::flatten(list.tail)
+		}
+	}
+			
 	def isPalindrome[T] (list : List[T]) = list == list.reverse 
 	
 	def lastOf[T] (list : List[T]) = nthFromLast(1, list)
