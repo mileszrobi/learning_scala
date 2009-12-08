@@ -6,15 +6,15 @@ import org.junit._
 class NthFromLastOfListTest {
   @Test
   def nilList() = {
-    Assert.assertEquals(Nil, LearningLists.NthFromLast(2, Nil));
+    Assert.assertEquals(None, LearningLists.NthFromLast(2, Nil));
   }
   @Test
   def emptyList() = {
-    Assert.assertEquals(Nil, LearningLists.NthFromLast(2, List[Int]()));
+    Assert.assertEquals(None, LearningLists.NthFromLast(2, List[Int]()));
   }
   @Test
   def oneItemList() = {
-    Assert.assertEquals(Nil, LearningLists.NthFromLast(2, List("hello")));
+    Assert.assertEquals(None, LearningLists.NthFromLast(2, List("hello")));
   }
   @Test
   def twoItemList() = {
@@ -26,11 +26,11 @@ class NthFromLastOfListTest {
   }
   
   @Test
-  def askingForZerothElementIsNil = {
-	Assert.assertEquals(Nil,  LearningLists.NthFromLast(0, List()));
+  def askingForZerothElementIsNone = {
+	Assert.assertEquals(None,  LearningLists.NthFromLast(0, List()));
   }
   @Test 
   def negativeN() = {
-	Assert.assertEquals(Nil,  LearningLists.NthFromLast(-1, List()));
+	Assert.assertEquals(None,  LearningLists.NthFromLast(-1, List()));
   }
 }

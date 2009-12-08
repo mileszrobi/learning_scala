@@ -5,15 +5,15 @@ import org.junit._
 class PenultimateOfListTest {
   @Test
   def nilList() = {
-    Assert.assertEquals(Nil, LearningLists.LastButOf(Nil));
+    Assert.assertEquals(None, LearningLists.LastButOf(Nil));
   }
   @Test
   def emptyList() = {
-    Assert.assertEquals(Nil, LearningLists.LastButOf(List[Int]()));
+    Assert.assertEquals(None, LearningLists.LastButOf(List[Int]()));
   }
   @Test
   def oneItemList() = {
-    Assert.assertEquals(Nil, LearningLists.LastButOf(List("hello")));
+    Assert.assertEquals(None, LearningLists.LastButOf(List("hello")));
   }
   @Test
   def twoItemList() = {

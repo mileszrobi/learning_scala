@@ -5,11 +5,11 @@ import org.junit._
 class LastOfListTest {
   @Test
   def nilList() = {
-    Assert.assertEquals(Nil, LearningLists.LastOf(Nil));
+    Assert.assertEquals(None, LearningLists.LastOf(Nil));
   }
   @Test
   def emptyList() = {
-    Assert.assertEquals(Nil, LearningLists.LastOf(List[Int]()));
+    Assert.assertEquals(None, LearningLists.LastOf(List[Int]()));
   }
   @Test
   def oneItemList() = {
