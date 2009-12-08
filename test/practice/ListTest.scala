@@ -5,18 +5,18 @@ import org.junit._
 class LastOfListTest {
   @Test
   def nilList() = {
-    Assert.assertEquals(None, LearningLists.LastOf(Nil));
+    Assert.assertEquals(None, LearningLists.lastOf(Nil));
   }
   @Test
   def emptyList() = {
-    Assert.assertEquals(None, LearningLists.LastOf(List[Int]()));
+    Assert.assertEquals(None, LearningLists.lastOf(List[Int]()));
   }
   @Test
   def oneItemList() = {
-    Assert.assertEquals("hello", LearningLists.LastOf(List("hello")));
+    Assert.assertEquals("hello", LearningLists.lastOf(List("hello")));
   }
   @Test
   def twoItemList() = {
-    Assert.assertEquals("last", LearningLists.LastOf(List("first", "last")));
+    Assert.assertEquals("last", LearningLists.lastOf(List("first", "last")));
   }
 }
