@@ -1,6 +1,8 @@
 package practice
 
 object LearningLists {
+	def runLengthEncodeOnlyDupesToBecomeTuples[T](input : List[T]) : List[(Int, T)] = Nil
+	
 	def runLengthEncode[T](input : List[T]) : List[(Int, T)] = packConsecutiveDuplicatesIntoSublist(input).map(x => (x.length, x(0)))
 	
 	def packConsecutiveDuplicatesIntoSublist[T](input : List[T]) : List[List[T]] = input match {
