@@ -1,6 +1,8 @@
 package practice
 
 object LearningLists {
+	def removeConsecutiveDuplicates[T](input : List[T]) : List[T] = input.removeDuplicates;
+	
 	def flatten (list : List[Any]) : List[Any] = {
 		if (list.isEmpty) 
 			Nil 
