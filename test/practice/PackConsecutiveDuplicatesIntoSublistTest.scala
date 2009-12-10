@@ -10,4 +10,7 @@ class PackConsecutiveDuplicatesIntoSublistTest {
 	@Test def nilMapsToNil = verify(Nil, Nil)
 	
 	@Test def listWithOneElementMapsToAListWithinTheList = verify(List(List(1)), List(1))
+	
+	@Test def listWithTwoConsecDupeElementsMapsToAListWithOneSublistContainingTheTwoConsecElements = 
+		verify(List(List('a, 'a)), List('a, 'a))
 }
