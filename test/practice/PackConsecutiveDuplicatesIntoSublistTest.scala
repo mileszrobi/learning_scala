@@ -13,4 +13,10 @@ class PackConsecutiveDuplicatesIntoSublistTest {
 	
 	@Test def listWithTwoConsecDupeElementsMapsToAListWithOneSublistContainingTheTwoConsecElements = 
 		verify(List(List('a, 'a)), List('a, 'a))
+		
+	@Test def listWithTwoPairsMapsToAListWithTwoListsContainingThePairs =
+		verify(List(List(1, 1), List(2, 2)), List(1, 1, 2, 2))
+		
+	@Test def onlyConsecutivesArePacked =
+		verify(List(List(1, 1), List(2, 2), List(1)), List(1, 1, 2, 2, 1))
 }

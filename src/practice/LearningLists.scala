@@ -3,7 +3,10 @@ package practice
 object LearningLists {
 	def packConsecutiveDuplicatesIntoSublist[T](input : List[T]) : List[List[T]] = input match {
 		case Nil => Nil
-		case head :: tail => List(head) :: packConsecutiveDuplicatesIntoSublist(tail)
+		case head :: tail => {
+			val (headConsecsInList, tail) = input.span(_ == head)
+			headConsecsInList :: packConsecutiveDuplicatesIntoSublist(tail)
+		}
 	}
 	def removeConsecutiveDuplicates[T](input : List[T]) : List[T] = {
 		def actualImpl [T] (result : List[T], input : List[T]) : List[T] = input match {
