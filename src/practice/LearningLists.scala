@@ -7,7 +7,10 @@ object LearningLists {
 	
 	def runLengthEncode[T](input : List[T]) : List[(Int, T)] = packConsecutiveDuplicatesIntoSublist(input).map(x => (x.length, x(0)))
 	
-	def runLengthDecode [T](input : List[T]) : List[(Int, T)] = Nil
+	def runLengthDecode [T](input : List[(Int, T)]) : List[T] = input match {
+		case Nil => Nil
+		case head :: tail => List(head._2)
+	}
 	
 	def packConsecutiveDuplicatesIntoSublist[T](input : List[T]) : List[List[T]] = input match {
 		case Nil => Nil
