@@ -1,20 +1,32 @@
 package practice
 
 import org.junit._
-
-class RunLengthEncodingTest {
-	def verify(expected : List[Any], input : List[Any]) = {
-		Assert.assertEquals(expected, LearningLists.runLengthEncode(input))
-	} 
+@Ignore
+class RunLengthEncodingDecodingExamples {
+	// TODO: make this class abstract and stop junit from trying to run the abstract class 
+	def verifyConversion(encoded : List[Any], decoded : List[Any]) = {}	
 	
-	@Test def nilMapsToNil = verify(Nil, Nil)
+	@Test def nilMapsToNil = verifyConversion(Nil, Nil)
 	
-	@Test def singleElementListMapsToAListWithOnePair = 
-		verify(List((1, 'a)), List('a))
+	@Test def singleElement = 
+		verifyConversion(List((1, 'a)), List('a))
 				
-	@Test def multiNoConsecDuplicates = verify(List((1, 'a), (1, 'b)), List('a, 'b))
+	@Test def multiNoConsecDuplicates = verifyConversion(List((1, 'a), (1, 'b)), List('a, 'b))
 	
-	@Test def twoConsecDupes = verify(List((2, 'a), (2, 'b)), List('a, 'a, 'b, 'b))
+	@Test def twoConsecDupes = verifyConversion(List((2, 'a), (2, 'b)), List('a, 'a, 'b, 'b))
 	
-	@Test def onlyConsecsAreMapped = verify(List((1, 'a), (1, 'b), (1, 'a)), List('a, 'b, 'a))
+	@Test def onlyConsecsAreMapped = verifyConversion(List((1, 'a), (1, 'b), (1, 'a)), List('a, 'b, 'a))
+}
+
+class RunLengthEncodingTest extends RunLengthEncodingDecodingExamples {
+	override def verifyConversion(encoded : List[Any], decoded : List[Any]) = {
+		Assert.assertEquals(encoded, LearningLists.runLengthEncode(decoded))
+	} 
+}
+
+class RunLengthDecodingTest extends RunLengthEncodingTest {
+	override 
+	def verifyConversion(encoded : List[Any], decoded : List[Any]) {
+		Assert.assertEquals(decoded, LearningLists.runLengthDecode(encoded))
+	} 
 }
