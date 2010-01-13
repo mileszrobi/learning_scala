@@ -13,6 +13,8 @@ class RunLengthEncodingDecodingExamples {
 				
 	@Test def multiNoConsecDuplicates = verifyConversion(List((1, 'a), (1, 'b)), List('a, 'b))
 	
+	@Test def singleDuplicate = verifyConversion(List((2, 'a)), List('a, 'a))
+	
 	@Test def twoConsecDupes = verifyConversion(List((2, 'a), (2, 'b)), List('a, 'a, 'b, 'b))
 	
 	@Test def noConsecutiveDuplicatesButSameElementIsPresentTwice = verifyConversion(List((1, 'a), (1, 'b), (1, 'a)), List('a, 'b, 'a))
