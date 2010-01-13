@@ -4,7 +4,7 @@ import org.junit._
 @Ignore
 class RunLengthEncodingDecodingExamples {
 	// TODO: make this class abstract and stop junit from trying to run the abstract class 
-	def verifyConversion(encoded : List[Any], decoded : List[Any]) = {}	
+	def verifyConversion[T](encoded : List[(Int, T)], decoded : List[T]) {}	
 	
 	@Test def nilMapsToNil = verifyConversion(Nil, Nil)
 	
@@ -19,14 +19,17 @@ class RunLengthEncodingDecodingExamples {
 }
 
 class RunLengthEncodingTest extends RunLengthEncodingDecodingExamples {
-	override def verifyConversion(encoded : List[Any], decoded : List[Any]) = {
+	override
+	def verifyConversion[T](encoded : List[(Int, T)], decoded : List[T]) = {
 		Assert.assertEquals(encoded, LearningLists.runLengthEncode(decoded))
 	} 
 }
 
 class RunLengthDecodingTest extends RunLengthEncodingTest {
 	override 
-	def verifyConversion(encoded : List[Any], decoded : List[Any]) {
+	def verifyConversion[T](encoded : List[(Int, T)], decoded : List[T]) = {
 		Assert.assertEquals(decoded, LearningLists.runLengthDecode(encoded))
-	} 
+	}
+	
+	@Test def zeroIndexedEncodedDecodesToEmptyList = verifyConversion(List((0, "a")), Nil)
 }
