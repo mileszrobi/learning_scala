@@ -15,7 +15,10 @@ class RunLengthEncodingDecodingExamples {
 	
 	@Test def twoConsecDupes = verifyConversion(List((2, 'a), (2, 'b)), List('a, 'a, 'b, 'b))
 	
-	@Test def onlyConsecsAreMapped = verifyConversion(List((1, 'a), (1, 'b), (1, 'a)), List('a, 'b, 'a))
+	@Test def noConsecutiveDuplicatesButSameElementIsPresentTwice = verifyConversion(List((1, 'a), (1, 'b), (1, 'a)), List('a, 'b, 'a))
+	
+	@Test def mixedConsecDuplicateFollowedByNonDuplicate = 
+		verifyConversion(List((2, 'a), (1, 'b)), List('a, 'a, 'b))
 }
 
 class RunLengthEncodingTest extends RunLengthEncodingDecodingExamples {
