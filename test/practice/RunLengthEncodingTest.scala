@@ -1,10 +1,10 @@
 package practice
 
 import org.junit._
+
 @Ignore
-class RunLengthEncodingDecodingExamples {
-	// TODO: make this class abstract and stop junit from trying to run the abstract class 
-	def verifyConversion[T](encoded : List[(Int, T)], decoded : List[T]) {}	
+abstract class RunLengthEncodingDecodingExamples {
+	def verifyConversion[T](encoded : List[(Int, T)], decoded : List[T])	
 	
 	@Test def nilMapsToNil = verifyConversion(Nil, Nil)
 	
