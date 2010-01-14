@@ -2,7 +2,7 @@ package practice
 
 import org.junit._
 
-@Ignore
+@Ignore // Prevents JUnit from trying to instantiate the class
 abstract class RunLengthEncodingDecodingExamples {
 	def verifyConversion[T](encoded : List[(Int, T)], decoded : List[T])	
 	
