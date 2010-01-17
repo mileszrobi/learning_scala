@@ -2,19 +2,39 @@ package practice
 
 import org.junit._
 
-class RunLengthEncodingTest {
-	def verify(expected : List[Any], input : List[Any]) = {
-		Assert.assertEquals(expected, LearningLists.runLengthEncode(input))
-	} 
+@Ignore
+abstract class RunLengthEncodingDecodingExamples {
+	def verifyConversion[T](encoded : List[(Int, T)], decoded : List[T])	
 	
-	@Test def nilMapsToNil = verify(Nil, Nil)
+	@Test def nilMapsToNil = verifyConversion(Nil, Nil)
 	
-	@Test def singleElementListMapsToAListWithOnePair = 
-		verify(List((1, 'a)), List('a))
+	@Test def singleElement = 
+		verifyConversion(List((1, 'a)), List('a))
 				
-	@Test def multiNoConsecDuplicates = verify(List((1, 'a), (1, 'b)), List('a, 'b))
+	@Test def multiNoConsecDuplicates = verifyConversion(List((1, 'a), (1, 'b)), List('a, 'b))
 	
-	@Test def twoConsecDupes = verify(List((2, 'a), (2, 'b)), List('a, 'a, 'b, 'b))
+	@Test def singleDuplicate = verifyConversion(List((2, 'a)), List('a, 'a))
 	
-	@Test def onlyConsecsAreMapped = verify(List((1, 'a), (1, 'b), (1, 'a)), List('a, 'b, 'a))
+	@Test def twoConsecDupes = verifyConversion(List((2, 'a), (2, 'b)), List('a, 'a, 'b, 'b))
+	
+	@Test def noConsecutiveDuplicatesButSameElementIsPresentTwice = verifyConversion(List((1, 'a), (1, 'b), (1, 'a)), List('a, 'b, 'a))
+	
+	@Test def mixedConsecDuplicateFollowedByNonDuplicate = 
+		verifyConversion(List((2, 'a), (1, 'b)), List('a, 'a, 'b))
+}
+
+class RunLengthEncodingTest extends RunLengthEncodingDecodingExamples {
+	override
+	def verifyConversion[T](encoded : List[(Int, T)], decoded : List[T]) = {
+		Assert.assertEquals(encoded, LearningLists.runLengthEncode(decoded))
+	} 
+}
+
+class RunLengthDecodingTest extends RunLengthEncodingTest {
+	override 
+	def verifyConversion[T](encoded : List[(Int, T)], decoded : List[T]) = {
+		Assert.assertEquals(decoded, LearningLists.runLengthDecode(encoded))
+	}
+	
+	@Test def zeroIndexedEncodedDecodesToEmptyList = verifyConversion(List((0, "a")), Nil)
 }
