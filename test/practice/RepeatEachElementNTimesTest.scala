@@ -15,4 +15,7 @@ class RepeatEachElementNTimesTest {
 	
 	@Test(expected = classOf[Throwable])
 	def repeatingElementsMinusNumberOfTimesIsNotInterpreted : Unit = LearningLists.repeatEachElement(Nil, -3)
+	
+	@Test
+	def repeatingSingleElementList = verifyConversion(List('a, 'a, 'a), List('a), 3)
 }

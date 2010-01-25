@@ -1,7 +1,11 @@
 package practice
 
 object LearningLists {
-	def repeatEachElement[T](input : List[T], count : Int) : List[T] = Nil
+	def repeatEachElement[T](input : List[T], count : Int) : List[T] = { 
+		if (count < 0) 
+			throw new Exception()
+		Nil
+	}
 	
 	def duplicateElements[T](input : List[T]) : List[T] = input.flatMap(x => List(x, x))
 	
