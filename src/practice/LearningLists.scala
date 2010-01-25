@@ -2,7 +2,7 @@ package practice
 
 object LearningLists {
 	def duplicateElements[T](input : List[T]) : List[T] = input match {
-		case head :: Nil => head :: head :: Nil
+		case head :: tail => head :: head :: duplicateElements(tail)
 		case _ => Nil
 	}
 	

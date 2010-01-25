@@ -15,4 +15,5 @@ class DuplicateListElementsTest {
 			
 	@Test
 	def twoDifferentElementsBothDuplicated = verifyConversion(List(1, 1, 2, 2), List(1, 2))
+
 }
