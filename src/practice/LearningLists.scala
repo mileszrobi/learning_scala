@@ -1,6 +1,8 @@
 package practice
 
 object LearningLists {
+	def repeatEachElement[T](input : List[T], count : Int) : List[T] = Nil
+	
 	def duplicateElements[T](input : List[T]) : List[T] = input.flatMap(x => List(x, x))
 	
 	def runLengthEncodeOnlyDupesToBecomeTuples[T](input : List[T]) : List[Any] = packConsecutiveDuplicatesIntoSublist(input).map(
