@@ -1,13 +1,20 @@
 package practice
 
 object LearningLists {
+	def dropEveryNth[T](input : List[T], n : Int) : List[T] =
+		if(n <= 1 || input == Nil) Nil
+		else { 
+				val (firstN, tail) = input.splitAt(n);
+				firstN.slice(0, n -1) ::: dropEveryNth(tail, n)
+		}
+		
 	def repeatEachElement[T](input : List[T], count : Int) : List[T] = { 
 		if (count < 0) 
 			throw new Exception()
-		Nil
+		input.flatMap(x => List.make(count, x))
 	}
 	
-	def duplicateElements[T](input : List[T]) : List[T] = input.flatMap(x => List(x, x))
+	def duplicateElements[T](input : List[T]) : List[T] = repeatEachElement(input, 2)
 	
 	def runLengthEncodeOnlyDupesToBecomeTuples[T](input : List[T]) : List[Any] = packConsecutiveDuplicatesIntoSublist(input).map(
 			x => if(x.length == 1) x.head else (x.length, x.head)
@@ -17,12 +24,8 @@ object LearningLists {
 	
 	def runLengthDecode [T](input : List[(Int, T)]) : List[T] = input match {
 		case Nil => Nil
-		case (count, element) :: tail => repeat(element, count) ::: runLengthDecode(tail)
+		case (count, element) :: tail => List.make(count, element) ::: runLengthDecode(tail)
 	}
-	
-	def repeat[T](element : T, count : Int) : List[T] = 
-		if (count <= 0) Nil 
-		else element :: repeat(element, count - 1)
 	
 	def packConsecutiveDuplicatesIntoSublist[T](input : List[T]) : List[List[T]] = input match {
 		case Nil => Nil
