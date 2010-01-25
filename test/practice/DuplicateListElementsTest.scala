@@ -12,4 +12,7 @@ class DuplicateListElementsTest {
 	
 	@Test
 	def singleElementDuplicated = verifyConversion(List('a, 'a), List('a));
+			
+	@Test
+	def twoDifferentElementsBothDuplicated = verifyConversion(List(1, 1, 2, 2), List(1, 2))
 }
