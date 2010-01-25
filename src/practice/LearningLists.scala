@@ -1,10 +1,7 @@
 package practice
 
 object LearningLists {
-	def duplicateElements[T](input : List[T]) : List[T] = input match {
-		case head :: tail => head :: head :: duplicateElements(tail)
-		case _ => Nil
-	}
+	def duplicateElements[T](input : List[T]) : List[T] = input.flatMap(x => List(x, x))
 	
 	def runLengthEncodeOnlyDupesToBecomeTuples[T](input : List[T]) : List[Any] = packConsecutiveDuplicatesIntoSublist(input).map(
 			x => if(x.length == 1) x.head else (x.length, x.head)
