@@ -14,7 +14,11 @@ class RepeatEachElementNTimesTest {
 	def repeatingElementsOfANonEmptyListZeroTimesReturnsNil = verifyConversion(Nil, List(3, 3, 3, 3), 0)
 	
 	@Test(expected = classOf[Throwable])
-	def repeatingElementsMinusNumberOfTimesIsNotInterpreted : Unit = LearningLists.repeatEachElement(Nil, -3)
+	def repeatingElementsMinusNumberOfTimesIsNotInterpretedForNil : Unit = LearningLists.repeatEachElement(Nil, -3)
+	
+	@Test(expected = classOf[Throwable])
+	def repeatingElementsMinusNumberOfTimesIsNotInterpretedForNonEmptyList : Unit = 
+		LearningLists.repeatEachElement(List('s), -3)
 	
 	@Test
 	def repeatingSingleElementList = verifyConversion(List('a, 'a, 'a), List('a), 3)
