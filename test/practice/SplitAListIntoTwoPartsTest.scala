@@ -17,7 +17,6 @@ class SplitAListIntoTwoPartsBase {
         expectedResult,
         LearningLists.split(indexToSplitAt, inputList)
     )
-
 }
 
 class SplittingAListOfSizeThreeTest extends SplitAListIntoTwoPartsBase {
@@ -47,4 +46,13 @@ class SplittingATwoElementListAtIndexOneResultsInTwoListsOfOneEachForAllTypesTes
     def symbols = verifySplit('a, 'b)
     @Test
     def ints = verifySplit(1, 2)
+}
+class SplittingAFourElementListTest extends SplitAListIntoTwoPartsBase {
+    @Test
+    def atThree_ResultsInTuple_FirstSecondThird_Fourth ={
+        val expectedResult = (List(1, 2, 3), List(4))
+        val indexToSplitAt = 3
+        val inputList = List(1, 2, 3, 4)
+        verifyConversion(expectedResult, indexToSplitAt, inputList)
+    }
 }

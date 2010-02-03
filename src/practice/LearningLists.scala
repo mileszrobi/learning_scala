@@ -2,7 +2,7 @@ package practice
 
 object LearningLists {
     def split[T](firstLength : Int, input : List[T]) = 
-        if (input.size == 2) (List(input.head), input.tail)
+        if (firstLength == 1) (List(input.head), input.tail)
         else {
             val (h, t) = (input.head, input.tail)
             (List(h, t.head), t.tail)
