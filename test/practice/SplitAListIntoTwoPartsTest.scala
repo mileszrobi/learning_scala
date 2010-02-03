@@ -93,4 +93,10 @@ class InvalidInputsTest extends SplitAListIntoTwoPartsBase {
         val expected = LearningLists.split(0, list)
         verifyConversion(expected, -1, list)
     }
+    @Test
+    def splittingAtIndexLargerThanInputLengthIsInterpretedAsSplittingAtEnd = {
+        val list = List(1, 2, 3)
+        val expected = LearningLists.split(list.length, list)
+        verifyConversion(expected, list.length + 1, list)
+    }
 }
