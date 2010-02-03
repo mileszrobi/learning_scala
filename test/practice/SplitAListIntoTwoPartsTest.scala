@@ -17,18 +17,26 @@ class SplitAListIntoTwoPartsTest {
             expectedResult,
             LearningLists.split(indexToSplitAt, inputList)
         )
-    @Test
-    def splittingATwoElementListOfSymbols = {
-        val expectedResult = (List('a), List('b))
-        val indexToSplitAt = 1
-        val inputList = List('a, 'b)
-        verifyConversion(expectedResult, indexToSplitAt, inputList)
+
+    class SplittingATwoElementListAtIndexOneResultsInTwoListsOfOneEachForAllTypes
+            extends SplitAListIntoTwoPartsTest {
+
+        def verifySplit[T] (first : T, second : T) =
+            verifyConversion(
+                (List(first), List(second)), 1, List(first, second)
+            )
+        @Test
+        def symbols = verifySplit('a, 'b)
+        @Test
+        def ints = verifySplit(1, 2)
     }
+
+    
     @Test
-    def splittingATwoElementListOfInts = {
-        val expectedResult = (List(1), List(2))
-        val indexToSplitAt = 1
-        val inputList = List(1,2)
+    def splittingAThreeElementListOfIntsAtTheSecondElement = {
+        val expectedResult = (List(1, 2), List(3))
+        val indexToSplitAt = 2
+        val inputList = List(1,2,3)
         verifyConversion(expectedResult, indexToSplitAt, inputList)
     }
 
