@@ -56,3 +56,12 @@ class SplittingAFourElementListTest extends SplitAListIntoTwoPartsBase {
         verifyConversion(expectedResult, indexToSplitAt, inputList)
     }
 }
+
+class SplittingAtZerothElementResultsIn_Nil_InputListTest
+    extends SplitAListIntoTwoPartsBase {
+        
+        def verify [T] (input : List[T]) =
+            verifyConversion((Nil, input), 0, input)
+
+    @Test def twoElementList = verify(List('a, 'b))
+    }
