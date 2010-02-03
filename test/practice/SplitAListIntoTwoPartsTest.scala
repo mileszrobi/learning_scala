@@ -19,6 +19,18 @@ class SplitAListIntoTwoPartsBase {
     )
 }
 
+class SplittingATwoElementListAtIndexOneResultsInTwoListsOfOneEachForAllTypesTest
+        extends SplitAListIntoTwoPartsBase {
+
+    def verifySplit[T] (first : T, second : T) =
+        verifyConversion(
+            (List(first), List(second)), 1, List(first, second)
+        )
+    @Test
+    def symbols = verifySplit('a, 'b)
+    @Test
+    def ints = verifySplit(1, 2)
+}
 class SplittingAListOfSizeThreeTest extends SplitAListIntoTwoPartsBase {
     @Test
     def atSecond_ResultsInTuple_FirstSecond_Third = {
@@ -35,18 +47,6 @@ class SplittingAListOfSizeThreeTest extends SplitAListIntoTwoPartsBase {
         verifyConversion(expectedResult, indexToSplitAt, inputList)
     }
 }
-class SplittingATwoElementListAtIndexOneResultsInTwoListsOfOneEachForAllTypesTest
-        extends SplitAListIntoTwoPartsBase {
-
-    def verifySplit[T] (first : T, second : T) =
-        verifyConversion(
-            (List(first), List(second)), 1, List(first, second)
-        )
-    @Test
-    def symbols = verifySplit('a, 'b)
-    @Test
-    def ints = verifySplit(1, 2)
-}
 class SplittingAFourElementListTest extends SplitAListIntoTwoPartsBase {
     @Test
     def atThree_ResultsInTuple_FirstSecondThird_Fourth ={
@@ -57,11 +57,40 @@ class SplittingAFourElementListTest extends SplitAListIntoTwoPartsBase {
     }
 }
 
-class SplittingAtZerothElementResultsIn_Nil_InputListTest
-    extends SplitAListIntoTwoPartsBase {
-        
-        def verify [T] (input : List[T]) =
-            verifyConversion((Nil, input), 0, input)
+@Ignore
+abstract class SplittingAtBoundaries extends SplitAListIntoTwoPartsBase {
+    def verify [T] (input : List[T])
+
+    @Test def emptyList = verify(Nil)
+
+    @Test def oneElementList = verify(List(1))
 
     @Test def twoElementList = verify(List('a, 'b))
+
+    @Test def threeElementList = verify(List(1, 2, 3))
+
+    @Test def fourElementList = verify(List(1, 2, 3, 4))
+}
+
+class SplittingAtZerothElementResultsIn_Nil_InputListTest
+        extends SplittingAtBoundaries {
+        
+    def verify [T] (input : List[T]) =
+        verifyConversion((Nil, input), 0, input)
+}
+
+class SplittingAListAtEndOfListResultsIn_InputList_Nil_Test
+        extends SplittingAtBoundaries {
+
+    def verify [T] (input : List[T]) =
+        verifyConversion((input, Nil), input.size, input)
+}
+
+class InvalidInputsTest extends SplitAListIntoTwoPartsBase {
+    @Test
+    def negativeIndexIsInterpretedAsSplittingAtZero = {
+        val list = List(1, 2, 3)
+        val expected = LearningLists.split(0, list)
+        verifyConversion(expected, -1, list)
     }
+}
