@@ -3,6 +3,7 @@ package practice
 object LearningLists {
     def split[T](firstLength : Int, input : List[T]) : Tuple2[List[T], List[T]] =
         if(firstLength <= 0) (Nil, input)
+        else if (firstLength >= input.length) (input, Nil)
         else {
             val (h, t) = split(firstLength - 1, input.tail)
             (input.head :: h, t)
