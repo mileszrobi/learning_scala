@@ -1,7 +1,7 @@
 package practice
 
 object LearningLists {
-    def split[T](firstLength : Int, input : List[T]) = (Nil, Nil)
+    def split[T](firstLength : Int, input : List[T]) = (List('a), List('b))
     
 	def dropEveryNth[T](input : List[T], n : Int) : List[T] =
 		if(n <= 1 || input == Nil) Nil
