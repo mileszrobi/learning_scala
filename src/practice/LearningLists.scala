@@ -1,15 +1,17 @@
 package practice
 
 object LearningLists {
+    def split[T](firstLength : Int, input : List[T]) = (Nil, Nil)
+    
 	def dropEveryNth[T](input : List[T], n : Int) : List[T] =
 		if(n <= 1 || input == Nil) Nil
 		else { 
-				val (firstN, tail) = input.splitAt(n);
+                val (firstN, tail) = input.splitAt(n);
 				firstN.slice(0, n -1) ::: dropEveryNth(tail, n)
 		}
 		
 	def repeatEachElement[T](input : List[T], count : Int) : List[T] = { 
-		if (count < 0) 
+		if (count < 0)
 			throw new Exception()
 		input.flatMap(x => List.make(count, x))
 	}
