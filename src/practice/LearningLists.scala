@@ -1,8 +1,12 @@
 package practice
 
 object LearningLists {
-    def split[T](firstLength : Int, input : List[T]) = (List(input.head), input.tail)
-    
+    def split[T](firstLength : Int, input : List[T]) = 
+        if (input.size == 2) (List(input.head), input.tail)
+        else {
+            val (h, t) = (input.head, input.tail)
+            (List(h, t.head), t.tail)
+        }
 	def dropEveryNth[T](input : List[T], n : Int) : List[T] =
 		if(n <= 1 || input == Nil) Nil
 		else { 
