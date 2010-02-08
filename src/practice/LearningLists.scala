@@ -8,6 +8,7 @@ object LearningLists {
         right : Int
     ) : List[T] =
         if (left < 0) slice(input, 0, right)
+        else if (right > input.length) slice(input, left, input.length)
         else if(right - left <= 0) Nil
         else input(left) :: slice(input, left + 1, right)
     
