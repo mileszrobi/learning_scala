@@ -34,4 +34,8 @@ class SliceLeftInclusiveRightExclusiveTest {
     def threeElementListSlicedTwoElementAfterStartEqualsMiddleAndLastElement =
         verify(List(2, 3), List(1, 2, 3 ), 1, 3)
 
+    @Test
+    def ifLeftIsGreaterThanRightSliceEqualsNil =
+        verify(Nil, List(1, 2, 3, 4, 5), 2, 1)
+
 }
