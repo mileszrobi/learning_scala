@@ -1,6 +1,12 @@
 package practice
 
 object LearningLists {
+    /// left: inclusive, right: not included in result
+    def slice[T](
+        input : List[T],
+        left : Int,
+        right : Int
+    ) = Nil
     def split[T](firstLength : Int, input : List[T]) : Tuple2[List[T], List[T]] =
         if(firstLength <= 0) (Nil, input)
         else if (firstLength >= input.length) (input, Nil)
