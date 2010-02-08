@@ -55,5 +55,8 @@ class SliceLeftInclusiveRightExclusiveTest {
         val input = List(1, 2, 3, 4, 5)
         verify(slice(input, 2, input.length), input, 2, 20)
     }
+    @Test
+    def ifRightIsNegativeSliceIsNil =
+        verify(Nil, List(1, 2, 3, 4, 5), 2, -1)
 
 }
