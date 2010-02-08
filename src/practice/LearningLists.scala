@@ -6,8 +6,9 @@ object LearningLists {
         input : List[T],
         left : Int,
         right : Int
-    ) = if(right - left == 1) List(input(left))
-        else List(input(left), input(left + 1))
+    ) : List[T] =
+        if(right - left == 1) List(input(left))
+        else input(left) :: slice(input, left + 1, right)
     
     def split[T](firstLength : Int, input : List[T]) : Tuple2[List[T], List[T]] =
         if(firstLength <= 0) (Nil, input)
