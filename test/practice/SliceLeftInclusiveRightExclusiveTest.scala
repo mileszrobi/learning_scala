@@ -24,4 +24,8 @@ class SliceLeftInclusiveRightExclusiveTest {
     def twoElementListSlicedOneElementAfterFirstIsLastElement =
         verify(List(2), List(1, 2), 1, 2)
 
+    @Test
+    def twoElementListSlicedTwoElementsFromStartEqualsToSelf =
+        verify(List(1, 2), List(1, 2), 0, 2)
+
 }
