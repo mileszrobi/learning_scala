@@ -41,7 +41,7 @@ class SliceLeftInclusiveRightExclusiveTest {
     def ifLeftIsEqualToRightSliceEqualsNil =
         verify(Nil, List(1, 2, 3, 4, 5), 2, 2)
     @Test
-    def ifLeftIsNegativeItIsNil =
-        verify(Nil, List(1, 2, 3, 4, 5), -2, 2)
+    def ifLeftIsNegativeItIsSameAsSlicingFromZero =
+        verify(List(1, 2), List(1, 2, 3, 4, 5), -2, 2)
 
 }
