@@ -58,5 +58,8 @@ class SliceLeftInclusiveRightExclusiveTest {
     @Test
     def ifRightIsNegativeSliceIsNil =
         verify(Nil, List(1, 2, 3, 4, 5), 2, -1)
+    @Test
+    def emptyListSlicedIntoNil =
+        verify(Nil, Nil, 0, 1)
 
 }
