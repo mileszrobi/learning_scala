@@ -4,17 +4,22 @@ import org.junit._
 import Assert._
 
 class SliceLeftInclusiveRightExclusiveTest {
+    def slice[T] (
+        input : List[T],
+        left : Int,
+        right : Int
+    ) = LearningLists.slice(input, left, right)
+
     def verify[T] (
         expectedResult : List[T],
         input : List[T],
         left : Int,
         right : Int
-    ) = { assertEquals(expectedResult, LearningLists.slice(input, left, right)) }
+    ) = assertEquals(expectedResult, slice(input, left, right))
 
     @Test
-    def singleElementListAllOfItSlicedEqualsToSelf = {
+    def singleElementListAllOfItSlicedEqualsToSelf =
         verify(List(1), List(1), 0, 1)
-    }
 
     @Test
     def twoElementListSlicedOneElementFromStartIsFirstElement =
@@ -41,7 +46,9 @@ class SliceLeftInclusiveRightExclusiveTest {
     def ifLeftIsEqualToRightSliceEqualsNil =
         verify(Nil, List(1, 2, 3, 4, 5), 2, 2)
     @Test
-    def ifLeftIsNegativeItIsSameAsSlicingFromZero =
-        verify(List(1, 2), List(1, 2, 3, 4, 5), -2, 2)
+    def ifLeftIsNegativeItIsSameAsSlicingFromZero = {
+        val input = List(1, 2, 3, 4, 5)
+        verify(slice(input, 0, 2), input, -2, 2)
+    }
 
 }
