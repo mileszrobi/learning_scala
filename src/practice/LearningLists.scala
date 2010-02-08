@@ -7,11 +7,11 @@ object LearningLists {
         left : Int,
         right : Int
     ) : List[T] = {
-        val l = if (left < 0)  0 else left
-        if (left < 0) left = 0
-        else if (right > input.length) slice(input, left, input.length)
-        else if(right - left <= 0) Nil
-        else input(left) :: slice(input, left + 1, right)
+        val l = Math.max(left, 0)
+        val r = Math.min(right, input.length)
+
+        if(r - l <= 0) Nil
+        else input(l) :: slice(input, l + 1, r)
     }
     
     def split[T](firstLength : Int, input : List[T]) : Tuple2[List[T], List[T]] =
