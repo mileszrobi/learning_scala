@@ -6,11 +6,13 @@ object LearningLists {
         input : List[T],
         left : Int,
         right : Int
-    ) : List[T] =
-        if (left < 0) slice(input, 0, right)
+    ) : List[T] = {
+        val l = if (left < 0)  0 else left
+        if (left < 0) left = 0
         else if (right > input.length) slice(input, left, input.length)
         else if(right - left <= 0) Nil
         else input(left) :: slice(input, left + 1, right)
+    }
     
     def split[T](firstLength : Int, input : List[T]) : Tuple2[List[T], List[T]] =
         if(firstLength <= 0) (Nil, input)
