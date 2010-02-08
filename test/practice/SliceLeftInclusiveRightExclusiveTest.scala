@@ -50,5 +50,10 @@ class SliceLeftInclusiveRightExclusiveTest {
         val input = List(1, 2, 3, 4, 5)
         verify(slice(input, 0, 2), input, -2, 2)
     }
+    @Test
+    def ifRightIsGreaterThanInputLengthItIsSameAsSlicingToEnd = {
+        val input = List(1, 2, 3, 4, 5)
+        verify(slice(input, 2, input.length), input, 2, 20)
+    }
 
 }
