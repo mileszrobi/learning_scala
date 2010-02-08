@@ -37,5 +37,8 @@ class SliceLeftInclusiveRightExclusiveTest {
     @Test
     def ifLeftIsGreaterThanRightSliceEqualsNil =
         verify(Nil, List(1, 2, 3, 4, 5), 2, 1)
+    @Test
+    def ifLeftIsEqualToRightSliceEqualsNil =
+        verify(Nil, List(1, 2, 3, 4, 5), 2, 2)
 
 }
