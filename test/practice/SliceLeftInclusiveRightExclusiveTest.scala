@@ -27,5 +27,11 @@ class SliceLeftInclusiveRightExclusiveTest {
     @Test
     def twoElementListSlicedTwoElementsFromStartEqualsToSelf =
         verify(List(1, 2), List(1, 2), 0, 2)
+    @Test
+    def threeElementListSlicedOneElementAfterStartEqualsMiddleElement =
+        verify(List(2), List(1, 2, 3 ), 1, 2)
+    @Test
+    def threeElementListSlicedTwoElementAfterStartEqualsMiddleAndLastElement =
+        verify(List(2, 3), List(1, 2, 3 ), 1, 3)
 
 }
