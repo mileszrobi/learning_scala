@@ -1,6 +1,8 @@
 package practice
 
 object LearningLists {
+    def rotate[T](n : Int, list : List[T]) : List[T] = Nil
+
     /// left: inclusive, right: not included in result
     def slice[T](
         input : List[T],
