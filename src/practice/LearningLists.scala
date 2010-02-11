@@ -1,18 +1,17 @@
 package practice
 
 object LearningLists {
-    def rotate[T](n : Int, input : List[T]) : List[T] =
-        if(input.size == 3)
-            (n.abs % input.size) match  {
-                case 1 => List(input(3 - 2), input(3 - 1), input(3 - 3))
-                case _ => List(input(3 - 1), input(3 - 3), input(3 - 2))
-            }
-        else if(input.size == 2)
-            (n.abs % input.size) match  {
-                case 0 => List(input(0), input (1))
-                case 1 => List(input(2 - 1), input (2 - 2))
-            }
-        else input
+    def rotate[T](n : Int, input : List[T]) : List[T] = input match {
+        case Nil => Nil
+        case _ => {
+            var res : List[T] = Nil
+            val firstElemnentIndex =
+                input.length - (input.length - n) % input.length
+            for(i <- 0 to input.length - 1)
+                res = input( (i + firstElemnentIndex) % input.length ) :: res
+            res.reverse
+        }
+    }
 
     /// left: inclusive, right: not included in result
     def slice[T](
