@@ -5,10 +5,10 @@ object LearningLists {
         case Nil => Nil
         case _ => {
             var res : List[T] = Nil
-            val firstElemnentIndex =
+            val firstElementIndex =
                 input.length - (input.length - n) % input.length
             for(i <- 0 to input.length - 1)
-                res = input( (i + firstElemnentIndex) % input.length ) :: res
+                res = input( (i + firstElementIndex) % input.length ) :: res
             res.reverse
         }
     }
