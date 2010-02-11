@@ -3,8 +3,10 @@ package practice
 object LearningLists {
     def rotate[T](n : Int, input : List[T]) : List[T] =
         if(input.size == 3) List(input(2), input(0), input(1))
-        else if(n % 2 == 0) input
-        else input.reverse
+        else if(input.size == 2)
+            if (n % 2 == 0) input
+            else List(input(1), input(0))
+        else input
 
     /// left: inclusive, right: not included in result
     def slice[T](
