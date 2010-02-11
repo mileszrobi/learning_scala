@@ -1,14 +1,12 @@
 package practice
 
 object LearningLists {
-    def rotate[T](n : Int, input : List[T]) : List[T] = input match {
-        case Nil => Nil
-        case _ => {
-            val firstElementIndex =
-                input.length - (input.length - n) % input.length
-            val (newtail, newhead) = split(firstElementIndex, input)
-            newhead ::: newtail
-        }
+    def rotate[T](n : Int, input : List[T]) : List[T] = {
+        val firstElementIndex =
+            if(input.length == 0) 0
+            else input.length - (input.length - n)% input.length
+        val (newtail, newhead) = split(firstElementIndex, input)
+        newhead ::: newtail
     }
 
     /// left: inclusive, right: not included in result
