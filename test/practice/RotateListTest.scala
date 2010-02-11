@@ -40,4 +40,7 @@ class RotateListTest {
 
     @Test def threeElementListRotatedByTwo =
         verify(List(3, 1, 2), List(1, 2, 3), 2)
+
+    @Test def threeElementListRotatedByOne =
+        verify(List(2, 3, 1), List(1, 2, 3), 1)
 }
