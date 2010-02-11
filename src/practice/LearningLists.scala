@@ -1,7 +1,7 @@
 package practice
 
 object LearningLists {
-    def rotate[T](n : Int, input : List[T]) : List[T] = input
+    def rotate[T](n : Int, input : List[T]) : List[T] = input.reverse
 
     /// left: inclusive, right: not included in result
     def slice[T](
