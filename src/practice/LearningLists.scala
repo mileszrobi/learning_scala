@@ -7,14 +7,13 @@ object LearningLists {
             var res : List[T] = Nil
             val firstElementIndex =
                 input.length - (input.length - n) % input.length
-            for(i <- 0 to input.length - 1)
-                res = input( (i + firstElementIndex) % input.length ) :: res
-            res.reverse
+            val (newtail, newhead) = split(firstElementIndex, input)
+            newhead ::: newtail
         }
     }
 
     /// left: inclusive, right: not included in result
-    def slice[T](
+    def slice[T]( // TODO: fix order of parameters to be consistent
         input : List[T],
         left : Int,
         right : Int
