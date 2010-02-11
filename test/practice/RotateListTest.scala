@@ -37,4 +37,7 @@ class RotateListTest {
         val li = List(1, 2)
         verify(li, li, -2)
     }
+
+    @Test def threeElementListRotatedByTwo =
+        verify(List(3, 1, 2), List(1, 2, 3), 2)
 }
