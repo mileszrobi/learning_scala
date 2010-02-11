@@ -8,8 +8,17 @@ class RotateListTest {
         assertEquals(expected, LearningLists.rotate(n, input))
     }
 
+    def rotatesToItselfRegardlessOfTheNumberOfPlacesRotated 
+        [T](input : List[T]) = 
+            for(i <- -1 to 2)
+                verify(input, input, i);
+
+
+    @Test def emptyListRotatesToItselfAnyNumberOfPlaces =
+        rotatesToItselfRegardlessOfTheNumberOfPlacesRotated (Nil)
+    
     @Test
-    def singleElementListRotatesToItself =
-        verify(List('a), List('a), 1);
+    def singleElementListRotatesToItselfAnyNumberOfPlaces =
+        rotatesToItselfRegardlessOfTheNumberOfPlacesRotated (List('a))
 
 }
