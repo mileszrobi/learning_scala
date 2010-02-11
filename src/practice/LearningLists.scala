@@ -4,7 +4,6 @@ object LearningLists {
     def rotate[T](n : Int, input : List[T]) : List[T] = input match {
         case Nil => Nil
         case _ => {
-            var res : List[T] = Nil
             val firstElementIndex =
                 input.length - (input.length - n) % input.length
             val (newtail, newhead) = split(firstElementIndex, input)
