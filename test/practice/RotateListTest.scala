@@ -24,4 +24,9 @@ class RotateListTest {
         val li = List(1, 2)
         verify(li.reverse, li, 1)
     }
+
+    @Test def twoElementListRotatedByTwoIsItself = {
+        val li = List(1, 2)
+        verify(li, li, 2)
+    }
 }
