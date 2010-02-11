@@ -2,10 +2,12 @@ package practice
 
 object LearningLists {
     def rotate[T](n : Int, input : List[T]) : List[T] =
-        if(input.size == 3) List(input(2), input(0), input(1))
+        if(input.size == 3) List(input(3 - 1), input(3 - 3), input(3 - 2))
         else if(input.size == 2)
-            if (n % 2 == 0) input
-            else List(input(1), input(0))
+            (n.abs % input.size) match  {
+                case 0 => List(input(0), input (1))
+                case 1 => List(input(2 - 1), input (2 - 2))
+            }
         else input
 
     /// left: inclusive, right: not included in result
