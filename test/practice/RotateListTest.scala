@@ -17,8 +17,11 @@ class RotateListTest {
     @Test def emptyListRotatesToItselfAnyNumberOfPlaces =
         rotatesToItselfRegardlessOfTheNumberOfPlacesRotated (Nil)
     
-    @Test
-    def singleElementListRotatesToItselfAnyNumberOfPlaces =
+    @Test def singleElementListRotatesToItselfAnyNumberOfPlaces =
         rotatesToItselfRegardlessOfTheNumberOfPlacesRotated (List('a))
 
+    @Test def twoElementListRotatedByOneBecomesReverse = {
+        val li = List(1, 2)
+        verify(li.reverse, li, 1)
+    }
 }
