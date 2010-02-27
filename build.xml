@@ -31,8 +31,14 @@
 	<taskdef resource="scala/tools/ant/antlib.xml">
 		<classpath refid="scala.classpath"/>
 	</taskdef> 
+
+	<target name="clean">
+		<delete verbose="true">
+			<fileset dir="${build.dir}" includes="**/*.class" />
+		</delete>
+	</target>
 	<!-- 5. Compiles sources by using "scalac" command. -->
-	<target name="compile">
+	<target name="compile" depends="clean">
 		<mkdir dir="${build.dir}"/>
 		<scalac srcdir="${src.dir}" destdir="${build.dir}" classpathref="project.classpath" force="changed">
 			<include name="**/*.scala"/>
@@ -42,5 +48,13 @@
 		</scalac>
 	</target>
 	<target name="test" depends="compile">
+		<junit failureProperty="test.failure" fork="true"> <!-- fork to ensure a clean classpath -->
+			<classpath refid="project.classpath" />
+			<formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="${build.dir}" includes="**/*Test.class" />
+			</batchtest>
+		</junit>
+		<fail message="test failed" if="test.failure" />
 	</target>
 </project>
