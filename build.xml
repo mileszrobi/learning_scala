@@ -1,0 +1,36 @@
+<!-- original from http://scriptlandia.blogspot.com/2007/04/how-to-compile-and-run-scala-program.html -->
+<project name="Learning Scala" default="compile" basedir=".">
+	<!-- 1. Define common properties. -->
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="bin"/>
+	<property name="scala.home" value="e:/lib/scala-2.7.7.final/" />
+
+	<property name="scala-compiler.jar" value="${scala.home}/lib/scala-compiler.jar"/>
+	<property name="scala-library.jar" value="${scala.home}/lib/scala-library.jar"/>
+
+	<!-- 2. Define Scala CLASSPATH. -->
+	<path id="scala.classpath">
+		<pathelement location="${scala-compiler.jar}"/>
+		<pathelement location="${scala-library.jar}"/>
+	</path>
+
+	<!-- 3. Define project CLASSPATH. -->
+	<path id="project.classpath">
+		<path refid="scala.classpath"/>
+		<pathelement location="${build.dir}"/>
+	</path>
+
+	<!-- 4. Define scala compiler command. -->
+	<taskdef resource="scala/tools/ant/antlib.xml">
+		<classpath refid="scala.classpath"/>
+	</taskdef> 
+	<!-- 5. Compiles sources by using "scalac" command. -->
+	<target name="compile">
+		<mkdir dir="${build.dir}"/>		
+		<scalac srcdir="${src.dir}" destdir="${build.dir}" classpathref="project.classpath" force="changed">
+			<include name="**/*.scala"/>
+		</scalac>
+	</target>
+	<target name="test" depends="compile">
+	</target>
+</project>
