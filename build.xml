@@ -1,0 +1,60 @@
+<!-- original from http://scriptlandia.blogspot.com/2007/04/how-to-compile-and-run-scala-program.html -->
+<project name="Learning Scala" default="test" basedir=".">
+	<!-- 0. Define machine specific properties -->
+	<property name="scala.home" value="e:/lib/scala-2.7.7.final/" />
+	<property name="junit.version" value="4.8.1" />
+	<property name="junit.home" value="e:/lib/junit${junit.version}/" />
+	<!-- 1. Define common properties. -->
+	<property name="src.dir" value="src"/>
+	<property name="test.dir" value="test"/>
+	<property name="build.dir" value="bin"/>
+
+	<property name="scala-compiler.jar" value="${scala.home}/lib/scala-compiler.jar"/>
+	<property name="scala-library.jar" value="${scala.home}/lib/scala-library.jar"/>
+	<property name="junit.jar" value="${junit.home}/junit-${junit.version}.jar" />
+	<property name="junit-dep.jar" value="${junit.home}/junit-dep-${junit.version}.jar" />
+	<!-- 2. Define Scala CLASSPATH. -->
+	<path id="scala.classpath">
+		<pathelement location="${scala-compiler.jar}"/>
+		<pathelement location="${scala-library.jar}"/>
+	</path>
+
+	<!-- 3. Define project CLASSPATH. -->
+	<path id="project.classpath">
+		<path refid="scala.classpath"/>
+		<pathelement location="${build.dir}"/>
+		<pathelement location="${junit.jar}"/>
+		<pathelement location="${junit-dep.jar}"/>
+	</path>
+
+	<!-- 4. Define scala compiler command. -->
+	<taskdef resource="scala/tools/ant/antlib.xml">
+		<classpath refid="scala.classpath"/>
+	</taskdef> 
+
+	<target name="clean">
+		<delete verbose="true">
+			<fileset dir="${build.dir}" includes="**/*.class" />
+		</delete>
+	</target>
+	<!-- 5. Compiles sources by using "scalac" command. -->
+	<target name="compile" depends="clean">
+		<mkdir dir="${build.dir}"/>
+		<scalac srcdir="${src.dir}" destdir="${build.dir}" classpathref="project.classpath" force="changed">
+			<include name="**/*.scala"/>
+		</scalac>
+		<scalac srcdir="${test.dir}" destdir="${build.dir}" classpathref="project.classpath" force="changed">
+			<include name="**/*.scala"/>
+		</scalac>
+	</target>
+	<target name="test" depends="compile">
+		<junit failureProperty="test.failure" fork="true"> <!-- fork to ensure a clean classpath -->
+			<classpath refid="project.classpath" />
+			<formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="${build.dir}" includes="**/*Test.class" />
+			</batchtest>
+		</junit>
+		<fail message="test failed" if="test.failure" />
+	</target>
+</project>
