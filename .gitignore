@@ -1,6 +1,10 @@
+.settings
+nbproject
 *.class
 *~
 *.swp
 .manager
 bin
 .scala_dependencies
+build
+dist
