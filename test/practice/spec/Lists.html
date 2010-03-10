@@ -29,6 +29,18 @@
       <dt id="p01"><strong><a href="http://aperiodic.net/phil/scala/s-99/p01.scala">P01</a> (*)
           Find the last element of a list.</strong></dt>
       <dd>Example:
+
+        <table concordion:execute="#result = findLast(#list)">
+            <tr>
+                <th concordion:set="#list"><pre>scala&gt; last(List(exampleList))</pre></th>
+                <th concordion:assertEquals="#result"><pre>res0 = ?</pre></th>
+            </tr>
+            <tr>
+                <td>1, 1, 2, 3, 5, 8</td>
+                <td>8</td>
+            </tr>
+        </table>
+
           <pre>scala&gt; last(List(<span concordion:set="#list">1, 1, 2, 3, 5, 8</span>))
 res0: Int = <span concordion:assertEquals="findLast(#list)">8</span></pre></dd>
 
