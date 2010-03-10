@@ -81,13 +81,13 @@ object LearningLists {
 			
 	def isPalindrome[T] (list : List[T]) = list == list.reverse 
 	
-	def lastOf[T] (list : List[T]) = nthFromLast(1, list)
+	def lastOf[T] (list : List[T]) : Option[T] = nthFromLast(1, list)
 	
-	def lastButOf[T] (list : List[T]) = nthFromLast(2, list)
+	def lastButOf[T] (list : List[T]) : Option[T]  = nthFromLast(2, list)
 	
 	// TODO: fix return type to be T
-	def nthFromLast[T] (n : Int, list : List[T]) =  n match {
-		case x if 1 to list.size contains n => list.reverse(n - 1)
+	def nthFromLast[T] (n : Int, list : List[T]) : Option[T] =  n match {
+		case x if 1 to list.size contains n => Some(list.reverse(n - 1))
 		case _ =>  None
 	}	
 }

@@ -17,10 +17,10 @@ class PenultimateOfListTest {
   }
   @Test
   def twoItemList() = {
-    Assert.assertEquals("first", LearningLists.lastButOf(List("first", "last")));
+    Assert.assertEquals(Some("first"), LearningLists.lastButOf(List("first", "last")));
   }
   @Test
   def threeItemList() = {
-    Assert.assertEquals(2, LearningLists.lastButOf(List(1, 2, 3)));
+    Assert.assertEquals(Some(2), LearningLists.lastButOf(List(1, 2, 3)));
   }
 }

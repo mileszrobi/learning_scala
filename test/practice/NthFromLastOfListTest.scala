@@ -18,11 +18,11 @@ class NthFromLastOfListTest {
   }
   @Test
   def twoItemList() = {
-    Assert.assertEquals(3, LearningLists.nthFromLast(3, List(1, 1, 3, 1, 1)));
+    Assert.assertEquals(Some(3), LearningLists.nthFromLast(3, List(1, 1, 3, 1, 1)));
   }
   @Test
   def threeItemList() = {
-    Assert.assertEquals(1, LearningLists.nthFromLast(3, List(1, 2, 3)));
+    Assert.assertEquals(Some(1), LearningLists.nthFromLast(3, List(1, 2, 3)));
   }
   
   @Test
