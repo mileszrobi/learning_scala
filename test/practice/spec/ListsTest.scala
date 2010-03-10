@@ -1,7 +1,8 @@
 package practice.spec
 
 import practice._
-import org.concordion.integration.junit3.ConcordionTestCase
+import org.junit.runner.RunWith
+import org.concordion.integration.junit4.ConcordionRunner
 
 class SplitResult (firstName : String, lastName : String ) {
     def getFirstName = firstName;
@@ -9,8 +10,8 @@ class SplitResult (firstName : String, lastName : String ) {
 }
 
 
-//@RunWith(classOf[ConcordionRunner])
-class ListsTest extends ConcordionTestCase {
+@RunWith(classOf[ConcordionRunner])
+class ListsTest {
     def lastOf (input : String) = "Blah" //LearningLists.lastOf(Nil).mkString;
 
     def split (input : String) = {
