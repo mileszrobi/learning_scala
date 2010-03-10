@@ -1,4 +1,3 @@
-
 <html xmlns:concordion="http://www.concordion.org/2007/concordion">
     <head>
         <title>Working with lists</title>
@@ -28,9 +27,9 @@
     <dl>
       <dt id="p01"><strong><a href="http://aperiodic.net/phil/scala/s-99/p01.scala">P01</a> (*)
           Find the last element of a list.</strong></dt>
-      <dd>Example:
-
+      <dd>
         <table concordion:execute="#result = findLast(#list)">
+            <caption>Examples</caption>
             <tr>
                 <th concordion:set="#list"><pre>scala&gt; last(List(exampleList))</pre></th>
                 <th concordion:assertEquals="#result"><pre>res0 = ?</pre></th>
@@ -51,10 +50,7 @@
                 <td>first, second</td>
                 <td>second</td>
             </tr>
-        </table>
-
-          <pre>scala&gt; last(List(<span concordion:set="#list">1, 1, 2, 3, 5, 8</span>))
-res0: Int = <span concordion:assertEquals="findLast(#list)">8</span></pre></dd>
+        </table></dd>
 
       <dt id="p02"><strong><a href="http://aperiodic.net/phil/scala/s-99/p02.scala">P02</a> (*)
           Find the last but one element of a list.</strong></dt>
@@ -301,26 +297,5 @@ res1: List[List[Symbol]] = List(List('i, 'j, 'k, 'l), List('o), List('a, 'b, 'c)
           of this length.  Finally, the last three lists have length 2.
           This is the most frequent length.</p></dd>
     </dl>
-
-
-        <table concordion:execute="#result = split(#fullName)">
-            <tr>
-                <th concordion:set="#fullName">Full Name</th>
-                <th concordion:assertEquals="#result.firstName">First Name</th>
-                <th concordion:assertEquals="#result.lastName">Last Name</th>
-            </tr>
-            <tr>
-                <td>John Smith</td>
-                <td>John</td>
-                <td>Smith</td>
-            </tr>
-            <tr>
-                <td>David Peterson</td>
-                <td>David</td>
-                <td>Peterson</td>
-            </tr>
-        </table>
     </body>
 </html>
-
-
