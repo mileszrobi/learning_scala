@@ -1,0 +1,27 @@
+
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+    <head>
+        <title>List excercises</title>
+    </head>
+    <body>
+        <table concordion:execute="#result = split(#fullName)">
+            <tr>
+                <th concordion:set="#fullName">Full Name</th>
+                <th concordion:assertEquals="#result.firstName">First Name</th>
+                <th concordion:assertEquals="#result.lastName">Last Name</th>
+            </tr>
+            <tr>
+                <td>John Smith</td>
+                <td>John</td>
+                <td>Smith</td>
+            </tr>
+            <tr>
+                <td>David Peterson</td>
+                <td>David</td>
+                <td>Peterson</td>
+            </tr>
+        </table>
+    </body>
+</html>
+
+
