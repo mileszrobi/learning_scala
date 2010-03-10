@@ -12,7 +12,10 @@ class SplitResult (firstName : String, lastName : String ) {
 
 @RunWith(classOf[ConcordionRunner])
 class ListsTest {
-    def lastOf (input : String) = "Blah" //LearningLists.lastOf(Nil).mkString;
+
+    implicit def csv2list(x: String) = List(x.split(",") : _*)
+
+    def findLast (input : String) = LearningLists.lastOf(input).toString
 
     def split (input : String) = {
         var r = input.split(' ');
