@@ -50,22 +50,98 @@
                 <td>first, second</td>
                 <td>second</td>
             </tr>
-        </table></dd>
+        </table>
+      </dd>
 
       <dt id="p02"><strong><a href="http://aperiodic.net/phil/scala/s-99/p02.scala">P02</a> (*)
           Find the last but one element of a list.</strong></dt>
-      <dd>Example:
-<pre>scala&gt; penultimate(List(1, 1, 2, 3, 5, 8))
-res0: Int = 5</pre></dd>
+      <dd>
+        <table concordion:execute="#result = penultimate(#list)">
+            <caption>Examples</caption>
+            <tr>
+                <th concordion:set="#list"><pre>scala&gt; penultimate(List(exampleList))</pre></th>
+                <th concordion:assertEquals="#result"><pre>res0 = ?</pre></th>
+            </tr>
+            <tr>
+                <td>1, 1, 2, 3, 5, 8</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>hello</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>first, second</td>
+                <td>first</td>
+            </tr>
+            <tr>
+                <td>1, 2, 3</td>
+                <td>2</td>
+            </tr>
+        </table>
+      </dd>
 
       <dt id="p03"><strong><a href="http://aperiodic.net/phil/scala/s-99/p03.scala">P03</a> (*)
           Find the <i>K</i>th element of a list.</strong></dt>
       <dd>By convention, the first element in the list is element
         0.
 
-        <p>Example:</p>
-<pre>scala&gt; nth(2, List(1, 1, 2, 3, 5, 8))
-res0: Int = 2</pre></dd>
+        <table concordion:execute="#result = nthFromLast(#n, #list)">
+            <caption>Examples</caption>
+            <tr>
+                <th><pre>scala&gt; nthFromLast(</pre></th>
+                <th concordion:set="#n">n, </th>
+                <th concordion:set="#list">List(exampleList))</th>
+                <th concordion:assertEquals="#result"><pre>res0 = ?</pre></th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>2</td>
+                <td>1, 1, 2, 3, 5, 8</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>2</td>
+                <td></td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>2</td>
+                <td>hello</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>3</td>
+                <td>1, 1, 3, 1, 1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>3</td>
+                <td>1, 2, 3</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>0</td>
+                <td>1, 2, 3</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>-1</td>
+                <td>a, b, c</td>
+                <td>None</td>
+            </tr>
+        </table>
+      </dd>
 
       <dt id="p04"><strong><a href="http://aperiodic.net/phil/scala/s-99/p04.scala">P04</a> (*)
           Find the number of elements of a list.</strong></dt>
@@ -81,9 +157,47 @@ res0: List[Int] = List(8, 5, 3, 2, 1, 1)</pre></dd>
 
       <dt id="p06"><strong><a href="http://aperiodic.net/phil/scala/s-99/p06.scala">P06</a> (*)
           Find out whether a list is a palindrome.</strong></dt>
-      <dd>Example:
-<pre>scala&gt; isPalindrome(List(1, 2, 3, 2, 1))
-res0: Boolean = true</pre></dd>
+      <dd>
+          <table concordion:execute="#result = isPalindrome(#list)">
+            <caption>Examples</caption>
+            <tr>
+                <th concordion:set="#list"><pre>scala&gt; isPalindrome(List(exampleList))</pre></th>
+                <th concordion:assertEquals="#result"><pre>res0 = ?</pre></th>
+            </tr>
+            <tr>
+                <td>1, 2, 3, 2, 1</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>a, a</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>a, b</td>
+                <td>false</td>
+            </tr>
+            <tr>
+                <td>1, 1, 1</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>1, 2, 1</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>1, 2, 3</td>
+                <td>false</td>
+            </tr>
+        </table>
+      </dd>
 
       <dt id="p07"><strong><a href="http://aperiodic.net/phil/scala/s-99/p07.scala">P07</a> (**)
           Flatten a nested list structure.</strong></dt>
